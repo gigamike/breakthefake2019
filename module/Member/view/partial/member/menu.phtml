@@ -1,0 +1,6 @@
+<div class="list-group">
+  <a href="<?php echo $this->url('member'); ?>" class="list-group-item <?php if($this->route=='member' && $this->action=='index'): ?>active<?php endif; ?>"><i class="fas fa-home"></i> Home</a>
+  <a href="<?php echo $this->url('member-site'); ?>" class="list-group-item <?php if($this->route=='member-site' && ($this->action=='index' || $this->action=='add' || $this->action=='edit')): ?>active<?php endif; ?>"><i class="fas fa-blog"></i> My Sites</a>
+  <a href="#" class="list-group-item"><i class="fas fa-user"></i> My Profile</a>
+  <a href="<?php echo $this->url('logout'); ?>" class="list-group-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+</div>

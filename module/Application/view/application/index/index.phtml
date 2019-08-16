@@ -1,0 +1,150 @@
+<h1 class="my-4">Welcome to #BreakTheFakeCouncil</h1>
+
+<!-- Marketing Icons Section -->
+<div class="row">
+  <div class="col-lg-4 mb-4">
+    <div class="card h-100">
+      <h4 class="card-header"><i class="fas fa-certificate"></i> Get Badge</h4>
+      <div class="card-body">
+        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+      </div>
+      <div class="card-footer">
+        <a href="#" class="btn btn-primary">Learn More</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 mb-4">
+    <div class="card h-100">
+      <h4 class="card-header"><i class="fas fa-users"></i> Be Recognized</h4>
+      <div class="card-body">
+        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+      </div>
+      <div class="card-footer">
+        <a href="#" class="btn btn-primary">Learn More</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 mb-4">
+    <div class="card h-100">
+      <h4 class="card-header"><i class="fas fa-list"></i> Be Listed in our Portal</h4>
+      <div class="card-body">
+        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+      </div>
+      <div class="card-footer">
+        <a href="#" class="btn btn-primary">Learn More</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.row -->
+
+<!-- Portfolio Section -->
+<h2>#BreakTheFakeCouncil Portal</h2>
+
+<div class="jumbotron">
+  <form method="post" action="<?php echo $this->url('articles', array('action' => 'search')); ?>">
+    <div class="row">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="%Keyword%" name="keyword">
+      </div>
+      <div class="col">
+        <select type="text" class="form-control" name="category_id">
+          <option value="">All Category</option>
+          <?php if($this->categories): ?>
+            <?php foreach ($this->categories as $row): ?>
+          <option <?php if($this->searchFilter['category_id'] == $row->getId()): ?>selected<?php endif; ?> value="<?php echo $row->getId(); ?>"><?php echo $this->escapeHtml($row->getCategory()); ?></option>
+            <?php endforeach; ?>
+          <?php endif; ?>
+        </select>
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-light mb-2">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<?php if($this->paginator): ?>
+  <?php
+      echo $this->paginationControl(
+          $this->paginator,
+          'sliding',
+          "partial/home/paginator.phtml",
+          array(
+            'route' => 'articles',
+            'search_by' => $this->search_by,
+          )
+      );
+    ?>
+
+<div class="row">
+  <?php foreach ($this->paginator as $row): ?>
+  <div class="col-lg-4 col-sm-6 portfolio-item">
+    <div class="card h-100">
+      <a href="<?php echo $this->escapeHtml($row->article_url);?>" target="_blank">
+        <div>
+          <img class="card-img-top" src="/img/site_article/<?php echo $this->escapeHtml($row->id);?>/cover.jpg" alt="">
+          <img class="watermark" src="/img/site/<?php echo $this->escapeHtml($row->site_id);?>/photo-700x400.jpg" alt="">
+        </div>
+
+      </a>
+      <div class="card-body">
+        <h4 class="card-title">
+          <a href="<?php echo $this->escapeHtml($row->article_url);?>" target="_blank"><?php echo $this->escapeHtml($row->title);?></a>
+        </h4>
+        <small><strong><?php echo $this->escapeHtml($row->name);?></strong> <?php echo date('M d, Y', strtotime($row->created_datetime));?></small>
+        <p class="card-text"><?php echo $this->getShortBody($row->body);?></p>
+          <a href="<?php echo $this->escapeHtml($row->article_url);?>" target="_blank" class="btn btn-primary">Read More</a>
+      </div>
+    </div>
+  </div>
+  <?php endforeach; ?>
+</div>
+
+<?php
+    echo $this->paginationControl(
+        $this->paginator,
+        'sliding',
+        "partial/home/paginator.phtml",
+        array(
+          'route' => 'articles',
+          'search_by' => $this->search_by,
+        )
+    );
+  ?>
+<?php endif; ?>
+
+<!-- /.row -->
+
+<!-- Features Section -->
+<div class="row">
+  <div class="col-lg-6">
+    <h2>#BreakTheFake2019</h2>
+    <p>The Modern Business template by Start Bootstrap includes:</p>
+    <ul>
+      <li>
+        <strong>Countries</strong>
+      </li>
+      <li>Jakarta</li>
+      <li>Kuala Lumpur</li>
+      <li>Manila</li>
+    </ul>
+    <p>Here is the official program teaser video of Break the Fake Hackathon 2019 happening in Jakarta, Kuala Lumpur and Manila. </p>
+  </div>
+  <div class="col-lg-6">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/7Zj0HVg-aCg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+<!-- /.row -->
+
+<hr>
+
+<!-- Call to Action Section -->
+<div class="row mb-4">
+  <div class="col-md-8">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+  </div>
+  <div class="col-md-4">
+    <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
+  </div>
+</div>

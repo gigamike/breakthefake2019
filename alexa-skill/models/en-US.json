@@ -1,0 +1,106 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "break the fake",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "HelloWorldIntent",
+                    "slots": [],
+                    "samples": [
+                        "say hello",
+                        "hello world"
+                    ]
+                },
+                {
+                    "name": "GetArticleIntent",
+                    "slots": [
+                        {
+                            "name": "Category",
+                            "type": "Category"
+                        }
+                    ],
+                    "samples": [
+                        "{Category}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "Category",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Travel"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Technology"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Sports"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Politics"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Lifestyle"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Jobs"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Health"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Fashion"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Entertainment"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Business"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

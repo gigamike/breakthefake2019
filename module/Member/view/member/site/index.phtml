@@ -1,0 +1,105 @@
+<!-- Page Heading/Breadcrumbs -->
+<h1 class="mt-4 mb-3">Welcome
+  <small><?php if ($user = $this->identity()): ?><?php echo $user->first_name; ?> <?php echo $user->last_name; ?><?php endif; ?></small>
+</h1>
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="<?php echo $this->url('member'); ?>">Home</a>
+  </li>
+  <li class="breadcrumb-item active">My Site</li>
+</ol>
+
+<!-- Content Row -->
+<div class="row">
+  <!-- Sidebar Column -->
+  <div class="col-lg-3 mb-4">
+    <?php echo $this->partial('partial/member/menu.phtml', array(
+        'route' => $this->route,
+        'action' => $this->action,
+    )); ?>
+  </div>
+  <!-- Content Column -->
+  <div class="col-lg-9 mb-4">
+    <div class="row">
+      <div class="col-lg-6">
+        <h2>My Site</h2>
+      </div>
+      <div class="col-lg-6">
+        <div class="float-sm-right">
+          <a class="btn btn-primary" href="<?php echo $this->url('member-site', ['action' => 'add',]); ?>"><i class="fas fa-plus-square"></i> Add Site</a>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <?php
+    $flash = $this->flashMessenger();
+    $flash->setMessageOpenFormat('<div%s role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        ')
+        ->setMessageSeparatorString('')
+        ->setMessageCloseString('</div>');
+
+    echo $flash->render('error',   array('alert', 'alert-dismissible', 'alert-danger'));
+    echo $flash->render('info',    array('alert', 'alert-dismissible', 'alert-info'));
+    echo $flash->render('default', array('alert', 'alert-dismissible', 'alert-warning'));
+    echo $flash->render('success', array('alert', 'alert-dismissible', 'alert-success'));
+     ?>
+
+     <?php
+             $form->setAttribute('action', $this->url('member-site', ['action' => 'search',]));
+             $form->prepare();
+             echo $this->form()->openTag($form);
+             ?>
+             <div class="form-row">
+               <div class="col"><?= $this->formElement($form->get('name_keyword')) ?></div>
+               <?php echo $this->formSubmit($form->get('submit')); ?>
+             </div>
+             <?php echo $this->form()->closeTag();?>
+<br>
+     <div class="row">
+       <?php if (count($this->paginator)): ?>
+         <?php foreach ($this->paginator as $site): ?>
+       <div class="col-lg-5 col-sm-7 portfolio-item">
+         <div class="card h-100">
+           <a target="_blank" href="<?php echo $this->escapeHtml($site->getSiteUrl()); ?>"><img class="card-img-top" src="/img/site/<?php echo $site->getId(); ?>/photo-700x400.jpg" alt=""></a>
+           <div class="card-body">
+             <h4 class="card-title">
+               <a target="_blank" href="<?php echo $this->escapeHtml($site->getSiteUrl()); ?>"><?php echo $this->escapeHtml($site->getName()); ?></a>
+             </h4>
+             <p class="card-text"><?php echo $this->escapeHtml($site->getDescription()); ?></p>
+              <a href="<?php echo $this->url('member-site', ['action' => 'edit', 'id' => $site->getId(),]); ?>" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i> Edit</a>
+               <a href="<?php echo $this->url('member-site', ['action' => 'badge', 'id' => $site->getId(),]); ?>" class="btn btn-info btn-sm"><i class="fas fa-certificate"></i> Get Badge</a>
+               <a href="<?php echo $this->url('member-site', ['action' => 'delete', 'id' => $site->getId(),]); ?>" class="btn btn-danger btn-sm"><i class="fas fa-minus-circle"></i> Delete</a>
+           </div>
+         </div>
+       </div>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <div class="col-lg-12">
+            <p>No sites yet.</p>
+          </div>
+      <?php endif; ?>
+
+     </div>
+
+     <div class="card-footer small text-muted">
+        <?= $this->paginationControl(
+            $this->paginator,
+            'Sliding',
+            'partial/member/paginator.phtml',
+            [
+              'route' => 'member-site',
+            ]
+        ) ?>
+      </div>
+
+  </div>
+  <!-- /.container-fluid -->
+  </div>
+</div>
+<!-- /.row -->

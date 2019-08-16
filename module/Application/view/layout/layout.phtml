@@ -1,0 +1,128 @@
+<?php echo $this->doctype(); ?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('BreakTheFake2019 ')->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no')
+        ?>
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath() . '/css/style.css')
+                        ->prependStylesheet($this->basePath() . '/vendor/fontawesome-free-5.10.1-web/css/all.css')
+                        ->prependStylesheet($this->basePath() . '/vendor/bootstrap-social-gh-pages/bootstrap-social.css')
+                        ->prependStylesheet($this->basePath() . '/css/modern-business.css')
+                        ->prependStylesheet($this->basePath() . '/vendor/bootstrap/css/bootstrap.min.css') ?>
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath() . '/vendor/bootstrap/js/bootstrap.bundle.min.js')
+            ->prependFile($this->basePath() . '/vendor/jquery/jquery.min.js')
+        ; ?>
+    </head>
+    <body>
+
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="<?php echo $this->url('home'); ?>">#BreakTheFakeCouncil</a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <?php if ($user = $this->identity()): ?>
+                <?php if ($user->role == 'member'): ?>
+              <li class="nav-item">
+                  <a class="nav-link" href="<?php echo $this->url('member'); ?>"><i class="fas fa-user"></i> <?php echo $user->first_name; ?></a>
+                </li>
+                <?php endif; ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo $this->url('logout'); ?>"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                  </li>
+              <?php else: ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo $this->url('registration'); ?>"><i class="fas fa-registered"></i> Register</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo $this->url('login'); ?>"><i class="fas fa-sign-in-alt"></i> Sign in</a>
+                </li>
+              <?php endif; ?>
+              <li class="nav-item">
+                  <a class="nav-link" href="<?php echo $this->url('yellow-pages'); ?>"><i class="fas fa-award"></i> Yellow Pages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo $this->url('api'); ?>"><i class="fas fa-cogs"></i> API</a>
+                  </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo $this->url('about'); ?>"><i class="fas fa-info-circle"></i> About</a>
+                  </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <?php if($this->route == 'home'): ?>
+      <header>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" role="listbox">
+            <!-- Slide One - Set the background image for this slide in the line below -->
+            <div class="carousel-item active" style="background-image: url('/img/slider/slide1.jpg')">
+              <div class="carousel-caption d-none d-md-block">
+
+              </div>
+            </div>
+            <!-- Slide Two - Set the background image for this slide in the line below -->
+            <div class="carousel-item" style="background-image: url('/img/slider/slide2.jpg')">
+              <div class="carousel-caption d-none d-md-block">
+
+              </div>
+            </div>
+            <!-- Slide Three - Set the background image for this slide in the line below -->
+            <div class="carousel-item" style="background-image: url('/img/slider/slide3.jpg')">
+              <div class="carousel-caption d-none d-md-block">
+
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </header>
+      <?php endif; ?>
+
+      <div class="container">
+          <?php echo $this->content; ?>
+      </div>
+
+      <footer class="py-5 bg-dark">
+        <div class="container">
+          <p class="m-0 text-center text-white">Copyright &copy; Gigamike.net 2019</p>
+        </div>
+      </footer>
+
+      <script>
+      var botmanWidget = {
+          // bubbleAvatarUrl: '/img/mik.jpg',
+          chatServer: '/chatbot/server',
+          frameEndpoint: '/chatbot',
+          title: '#BreakTheFakeCouncil',
+          mainColor: '#680102',
+          bubbleBackground: '#680102',
+          aboutLink: 'https://www.gigamike.net/',
+          aboutText: 'Powered By GigaMike',
+          introMessage: 'Welcome to the BreakTheFaceCouncil.',
+      };
+      </script>
+      <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+
+      <?php echo $this->inlineScript() ?>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+.card-img-top{
+  border: 1px solid #e6e9ec;
+}
+.jumbotron{
+  padding: 1rem 1rem;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #680102;
+  border-color: #680102;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #000000;
+  border-color: #000000;
+}
+.bg-dark {
+    background-color: #680102 !important;
+}
+.navbar-dark .navbar-brand{
+  color: #fff;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+}
+.btn-secondary {
+  color: #fff;
+  background-color: #680102;
+  border-color: #3c3c3c;
+}
+.jumbotron {
+  background-color: #680102;
+}
+.page-item.active .page-link {
+  color: #3c3c3c;
+  background-color: #680102;
+  border-color: #3c3c3c;
+}
+.page-link {
+  color: #3c3c3c;
+  border: 1px solid #3c3c3c;
+}
+a {
+  color: #3c3c3c;
+}
+body {
+  line-height: 19px;
+  color: #111;
+  font-family: Arial,sans-serif;
+}
+.carousel-item{
+  height: 400px;
+}
+.carousel-item img{
+  height: 400px;
+}
+.help-block{
+  color: #cc0000;
+}
+.jumbotron {
+  padding: 1rem 1rem;
+}
+.watermark-wrapper
+{
+	position:absolute;
+	z-index: 1;
+}
+.watermark
+{
+	position:absolute;
+	top:10px;
+	right:13px;
+	z-index: 2;
+  width:20%;
+}
+.page-item.active .page-link {
+    color: #fff;
+}

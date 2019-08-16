@@ -1,0 +1,70 @@
+<!-- Page Heading/Breadcrumbs -->
+<h1 class="mt-4 mb-3">API Portal
+  <small>How To</small>
+</h1>
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="<?php echo $this->url('home'); ?>">Home</a>
+  </li>
+  <li class="breadcrumb-item active">Developers API</li>
+</ol>
+
+<div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">GET Categories</a>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+      <div class="card-body">
+        <strong>Endpoint:</strong> <?php echo $this->config['baseUrl']; ?>api/categories<br>
+        <ul>
+          <li><strong>access_key</strong> - required, Access Key.</li>
+          <li><strong>access_key_secret</strong> - required, Access Key Secret.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Get Search Article</a>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="card-body">
+        <strong>Endpoint:</strong> <?php echo $this->config['baseUrl']; ?>api/search<br>
+        <strong>Get Parameters:</strong>
+        <ul>
+          <li><strong>access_key</strong> - required, Access Key.</li>
+          <li><strong>access_key_secret</strong> - required, Access Key Secret.</li>
+          <li><strong>category</strong> - optional, Category</li>
+          <li><strong>category_id</strong> - optional, Category ID</li>
+          <li><strong>title</strong> - optional, Keyword title</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingThree">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Get Yellow Pages</a>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="card-body">
+        <strong>Endpoint:</strong> <?php echo $this->config['baseUrl']; ?>api/yellow-pages<br>
+        <strong>Get Parameters:</strong>
+        <ul>
+          <li><strong>access_key</strong> - required, Access Key.</li>
+          <li><strong>access_key_secret</strong> - required, Access Key Secret.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

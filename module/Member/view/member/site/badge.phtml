@@ -1,0 +1,98 @@
+<!-- Page Heading/Breadcrumbs -->
+<h1 class="mt-4 mb-3">Welcome
+  <small><?php if ($user = $this->identity()): ?><?php echo $user->first_name; ?> <?php echo $user->last_name; ?><?php endif; ?></small>
+</h1>
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="<?php echo $this->url('member'); ?>">Home</a>
+  </li>
+  <li class="breadcrumb-item active">My Site</li>
+</ol>
+
+<!-- Content Row -->
+<div class="row">
+  <!-- Sidebar Column -->
+  <div class="col-lg-3 mb-4">
+    <?php echo $this->partial('partial/member/menu.phtml', array(
+        'route' => $this->route,
+        'action' => $this->action,
+    )); ?>
+  </div>
+  <!-- Content Column -->
+  <div class="col-lg-9 mb-4">
+    <h2><?php echo $this->escapeHtml($site->getName()); ?> Badge</h2>
+
+    <hr>
+
+    <?php
+    $flash = $this->flashMessenger();
+    $flash->setMessageOpenFormat('<div%s role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        ')
+        ->setMessageSeparatorString('')
+        ->setMessageCloseString('</div>');
+
+    echo $flash->render('error',   array('alert', 'alert-dismissible', 'alert-danger'));
+    echo $flash->render('info',    array('alert', 'alert-dismissible', 'alert-info'));
+    echo $flash->render('default', array('alert', 'alert-dismissible', 'alert-warning'));
+    echo $flash->render('success', array('alert', 'alert-dismissible', 'alert-success'));
+     ?>
+
+
+     <div class="row">
+       <div class="col-lg-12">
+         <p><?php echo $this->escapeHtml($site->getDescription()); ?></p>
+        <div class="form-group">
+          <?php if(!is_null($this->photo)): ?>
+          <div class="row">
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+              <img class="card-img-top" src="<?php echo $this->photo; ?>?rand=<?php echo time(); ?>" alt="Photo">
+            </div>
+          </div>
+          <?php endif; ?>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Copy and insert this code to your blog</label>
+<textarea name="code" class="form-control" id="code" rows="10">
+<link href="<?php echo $this->config['baseUrl']; ?>badge/css/min.css" rel="stylesheet" type="text/css">
+<script src="<?php echo $this->config['baseUrl']; ?>badge/js/min.js"></script>
+<script>
+var $j = jQuery.noConflict();
+$j(document).ready(function(){
+	var id = 3;
+	$j('body').append('<?php echo $this->escapeHtml('<div id="icon-bar"> <a href="#ex1"><img src="' . $this->config['baseUrl']. 'badge/img/breakthefake.jpg"></a></div><div id="ex1" class="modal"> <div id="tabs"> <ul> <li><a href="#tabs-1">Identify Fake Article</a></li><li><a href="#tabs-2">Article Scores</a></li><li><a href="#tabs-3">Feedback</a></li></ul> <div id="tabs-1"> <img class="img-spot-fake" src="' . $this->config['baseUrl']. 'badge/img/how-to-spot-fake-news_440px.jpg"> </div><div id="tabs-2"> <table id="article-score"> <tr> <th>Factors</th> <th>Score</th> </tr><tr> <td>Domain</td><td>+10</td></tr><tr> <td>Number of Spelling Error</td><td>0</td></tr><tr> <td>Number of Grammar Error</td><td>0</td></tr><tr> <td>Number of Exclamation points</td><td>0</td></tr></table> <p> <strong>Legend:</strong> <ul> <li>Domain Score: Premium TLD (.COM .IO) VS. Free TLDs (Freenom .TK .ML .GA .CF .GQ) VS. Copycat Domains (.CO)</li><li>Grammar and Spelling Error: Most credible news sources have copy editors that will check for these mistakes before publication.</li><li>Number of Exclamation points: Author uses five exclamation points at the end of a sentence, it is often fake news of some sort. </li></ul> </p></div><div id="tabs-3"> <button class="loginBtn loginBtn--facebook"> Login with Facebook </button> <button class="loginBtn loginBtn--google"> Login with Google </button> <p> <strong>Is this fake article? Share your comment and sentiment.</strong> </p><button class="dislike"> <img src="http://breakthefake2019.gigamike.net/badge/img/iconfinder_thumbs-o-down_1608725.png"> </button> 5 <button class="like"> <img src="http://breakthefake2019.gigamike.net/badge/img/iconfinder_thumbs-o-up_1608724.png"> </button> 200<div class="row"> <div class="col-lg-12"> <div class="card my-4"> <h5 class="card-header">Leave a Comment:</h5> <div class="card-body"> <form> <div class="form-group"> <textarea class="form-control" rows="3"></textarea> </div><button type="submit" class="btn btn-primary">Submit</button> </form> </div></div><div class="media mb-4"> <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt=""> <div class="media-body"> <h5 class="mt-0">Commenter Name</h5> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </div></div></div></div></div></div></div>'); ?>');
+});
+</script>
+</textarea>
+          </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-info" onclick="myFunction()">Copy</button>
+          <a href="<?php echo $this->url('member-site'); ?>" class="btn btn-secondary">Cancel</a>
+        </div>
+       </div>
+  </div>
+  <!-- /.container-fluid -->
+  </div>
+</div>
+<!-- /.row -->
+
+<script>
+function myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("code");
+
+  /* Select the text field */
+  copyText.select();
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  // alert("Copied the text: " + copyText.value);
+}
+</script>

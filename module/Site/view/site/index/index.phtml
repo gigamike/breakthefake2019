@@ -1,0 +1,55 @@
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Yellow Pages
+      <small>Trusted Sites</small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="<?php echo $this->url('home'); ?>">Home</a>
+      </li>
+      <li class="breadcrumb-item active">Yellow Pages</li>
+    </ol>
+    <?= $this->paginationControl(
+        $this->paginator,
+        'Sliding',
+        'partial/site/paginator.phtml',
+        [
+          'route' => 'yellow-pages',
+        ]
+    ) ?>
+
+    <div class="row">
+      <?php if (count($this->paginator)): ?>
+        <?php foreach ($this->paginator as $site): ?>
+      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+        <div class="card h-100">
+          <a target="_blank" href="<?php echo $this->escapeHtml($site->getSiteUrl()); ?>"><img class="card-img-top" src="/img/site/<?php echo $site->getId(); ?>/photo-700x400.jpg" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a target="_blank" href="<?php echo $this->escapeHtml($site->getSiteUrl()); ?>"><?php echo $this->escapeHtml($site->getName()); ?></a>
+            </h4>
+            <p class="card-text"><?php echo $this->escapeHtml($site->getDescription()); ?></p>
+             <a target="_blank" href="<?php echo $this->escapeHtml($site->getSiteUrl()); ?>" class="btn btn-secondary btn-sm"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+             <a target="_blank" href="/img/certificate/certificate.jpg" class="btn btn-secondary btn-sm"><i class="fas fa-certificate"></i> Certificate</a>
+            </div>
+        </div>
+      </div>
+    <?php endforeach; ?>
+  <?php else: ?>
+    <div class="col-lg-12">
+      <p>No sites yet.</p>
+    </div>
+<?php endif; ?>
+    </div>
+
+
+
+           <?= $this->paginationControl(
+               $this->paginator,
+               'Sliding',
+               'partial/site/paginator.phtml',
+               [
+                 'route' => 'yellow-pages',
+               ]
+           ) ?>
